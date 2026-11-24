@@ -1,0 +1,20 @@
+{
+  "name": "pi-spec-runner",
+  "version": "0.1.0",
+  "description": "Pi package: build an approved spec end to end without supervision, one Pi session per plan step in tmux.",
+  "type": "module",
+  "keywords": ["pi-package"],
+  "repository": "github:gingfrederik/pi-spec-runner",
+  "pi": {
+    "extensions": ["./extensions/jobs/index.ts", "./extensions/worktree/index.ts"],
+    "skills": ["./skills"]
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-ai": "*",
+    "@earendil-works/pi-coding-agent": "*",
+    "typebox": "*"
+  },
+  "scripts": {
+    "test": "bash skills/spec-runner/test/run.sh && node --test 'extensions/*/test/*.test.ts'"
+  }
+}
