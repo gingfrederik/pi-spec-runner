@@ -11,6 +11,7 @@ branch, audits the result against the spec, and reports once.
 |---|---|
 | `spec-runner` skill | The orchestrator: `/skill:spec-runner <spec path>` |
 | `jobs` extension | `job_start`, `job_wait`, `job_stop`: run a long command in the background and wait for it; blocks long `sleep` calls. See [extensions/jobs/README.md](extensions/jobs/README.md) |
+| `session-name` extension | `name_session`: the agent names its own session, so pi-intercom peers can address it. The orchestrator names itself `<slug>-orchestrator` with it |
 | `worktree` extension | `create_worktree`, `enter_worktree`, `exit_worktree`: git worktrees under `.worktrees/`, with dependency directories cloned from another worktree |
 
 ## Requirements

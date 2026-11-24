@@ -22,7 +22,7 @@ for target in scripts/launch.sh prompts.md run-schema.md contract.md lanes.md sc
   grep -q -F -e "]($target)" "$skill_file" || fail "SKILL.md does not link $target"
 done
 
-for needle in '--set-upstream-to' '--no-ff' 'info/exclude' '/alias' 'merge-base --is-ancestor' \
+for needle in '--set-upstream-to' '--no-ff' 'info/exclude' 'name_session' 'merge-base --is-ancestor' \
   'at most 3' 'at most 2' 'Never merge into main' 'main_branch' 'check-ignore -q .worktrees' \
   'create_worktree' 'unfilled' 'No .worktreeinclude' 'parent directory is not in this checkout' \
   'the directory the install command creates' 'under `patches/`' 'must print `0`' \
@@ -31,6 +31,9 @@ for needle in '--set-upstream-to' '--no-ff' 'info/exclude' '/alias' 'merge-base 
 done
 ! grep -q -E 'current_step([^s]|$)' "$skill_file" || fail "SKILL.md still names the singular current_step"
 ! grep -q -F -e '(sleep 600' "$skill_file" || fail "SKILL.md still has the bash recheck timer"
+# The orchestrator names itself with the name_session tool: keys typed into its own pane are
+# mangled when the prompt is in pi-vim NORMAL mode.
+! grep -q -F -e 'send-keys -t "$TMUX_PANE"' "$skill_file" || fail "SKILL.md still types into its own pane"
 
 # lanes.md (linked from SKILL.md) holds the rules of a run with two lanes.
 lanes_file="$skill_dir/lanes.md"

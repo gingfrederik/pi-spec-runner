@@ -6,7 +6,11 @@
   "keywords": ["pi-package"],
   "repository": "github:gingfrederik/pi-spec-runner",
   "pi": {
-    "extensions": ["./extensions/jobs/index.ts", "./extensions/worktree/index.ts"],
+    "extensions": [
+      "./extensions/jobs/index.ts",
+      "./extensions/session-name/index.ts",
+      "./extensions/worktree/index.ts"
+    ],
     "skills": ["./skills"]
   },
   "peerDependencies": {

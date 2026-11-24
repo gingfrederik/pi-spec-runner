@@ -28,7 +28,7 @@ The slug is `toy` (the `-design` suffix is stripped): integration branch `toy`, 
 
 ## Run
 
-Start the orchestrator inside tmux; it needs `$TMUX_PANE` to name itself.
+Start the orchestrator in a tmux session of its own:
 
 ```bash
 git -C /tmp/toy rev-parse main > /tmp/toy-main-before.txt

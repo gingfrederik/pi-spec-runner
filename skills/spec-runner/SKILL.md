@@ -62,16 +62,16 @@ Found: resume as [resume.md](resume.md) says.
 ### Name the session
 
 Workers and watchdogs address you as `<slug>-orchestrator`; the broker queues mail under that
-name while you are gone (not always: [resume.md](resume.md), step 3). `/alias` sets the name.
+name while you are gone (not always: [resume.md](resume.md), step 3).
 1. If `pi-intercom list --json` shows the session whose `id` is `$PI_SESSION_ID` with the name
    `<slug>-orchestrator`, you are done.
-2. Otherwise type the command into your own pane; an extension command typed while you work
-   runs at once:
-   `tmux send-keys -t "$TMUX_PANE" -l '/alias <slug>-orchestrator'` then
-   `tmux send-keys -t "$TMUX_PANE" Enter`.
+2. Otherwise call `name_session({ name: "<slug>-orchestrator" })`. Without a `name_session` tool,
+   halt with one line: "Enable the session-name extension of the pi-spec-runner package and
+   start again."
 3. Repeat the check of 1 up to 5 times, 2 s apart.
-4. If `$TMUX_PANE` is unset or the name never shows, halt with one line: "Run
-   `/alias <slug>-orchestrator`, then `/skill:spec-runner <spec>` again."
+4. If the name never shows, halt with one line: "pi-intercom does not list this session as
+   `<slug>-orchestrator`. Check that pi-intercom is loaded, then run `/skill:spec-runner <spec>`
+   again."
 
 ## 2. Set up the run
 
